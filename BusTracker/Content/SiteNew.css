@@ -1,0 +1,11 @@
+﻿body {
+    
+}
+
+.draggable{
+    position:absolute;
+    max-width:100%;
+    width:5%;
+    min-width:0%;
+    height:auto;
+}

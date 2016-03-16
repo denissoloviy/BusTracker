@@ -1,0 +1,76 @@
+﻿@model BusTracker.Models.BusModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="PictureGeneratorApp">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Libraries/angular.js"></script>
+    <link href="~/Libraries/bootstrap.css" rel="stylesheet" />
+    <link href="~/Libraries/bootstrap-theme.css" rel="stylesheet" />
+    <script src="~/Scripts/MyScripts/DragAndDrop.js"></script>
+    <script src="~/Scripts/MyScripts/SaveToDB.js"></script>
+    @*<script src="~/Scripts/MyScripts/SeatsCreating.js"></script>*@
+    <link href="~/Content/SiteNew.css" rel="stylesheet" />
+    <title>Index</title>
+
+    <script>
+
+
+    var pictureGenerator = angular.module("PictureGeneratorApp", []);
+
+    pictureGenerator.controller("PictureGeneratorCtrl", function ($scope) {
+
+        $scope.clickHandler = function () {
+            $scope.seatnumber = $scope.text;
+            $scope.temp = [];
+            var i;
+            for (i = 0; i < $scope.seatnumber; i++)
+                $scope.temp.push(i);
+        }
+    });
+
+    </script>
+    <script>
+    function myFunction() {
+        document.getElementById("numberofsetas").disabled = true;
+        document.getElementById("busmodel").disabled = true;
+    }
+    </script>
+
+</head>
+<body ng-controller="PictureGeneratorCtrl">
+    <div class="container" style="width:73.7321%;">
+        @*1000/1366*@
+        <div class="page-header">
+            <h2 class="qwer">Задання конфігурації сидінь</h2>
+        </div>
+        <form>
+            <input class="form-control" id="busmodel" placeholder="Введіть модель автобуса..." />
+            <input class="form-control" id="numberofsetas" ng-model="text" placeholder="Введіть кількість місць для сидіння..." />
+            <input type="submit" value="Submit" class="btn btn-default" ng-click="clickHandler()" onclick="myFunction()">
+            <span>@Html.ActionLink("Повернутися до вибору моделі", "/Choice")</span>
+        </form>
+        <form>
+            <div class="panel">
+                <div class="panel panel-default">
+                    <img src="~/Images/Bus.png" class="img-rounded" id="bus" style="max-width:100%; height:auto;" />
+                    <div ng-repeat="n in temp">
+                        <img src="~/Images/Seat.png" class="draggable" id={{n+1}} style="position:absolute" />
+                        <div class="imgtext" id={{n+1+"a"}}>
+                            <h6>{{n+1}}</h6>
+                            <input id={{n+1+"t"}} hidden />
+                            <input id={{n+1+"l"}} hidden />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" value="Save" onclick="Save()" class="btn btn-default" />
+        </form>
+</div>
+</body>
+</html>
