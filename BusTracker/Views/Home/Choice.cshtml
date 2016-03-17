@@ -12,7 +12,14 @@
     <link href="~/Content/SiteNew.css" rel="stylesheet" />
     <script src="~/Libraries/angular.js"></script>
     <script src="~/Scripts/MyScripts/ModelSelection.js"></script>
+    <script src="~/Scripts/MyScripts/SaveToDB.js"></script>
     <title>Сhoice</title>
+
+    <script>
+        function Reload() {
+            location.reload();
+        }
+    </script>
 
 </head>
 <body ng-controller="fupController">
@@ -26,9 +33,11 @@
                 <div class="input-group">
                     <form>
                         @Html.DropDownList("ModelOfBus", null, String.Empty, new { @class = "btn btn-default dropdown-toggle", @id = "ddl" })
+                        @Html.Hidden("BM", null, new { @id = "busmodel" })
                         <input type="submit" value="Enter" class="btn btn-default" ng-click="SeatsLoad()">
                         <span>
                             <input type="submit" value="Delete" class="btn btn-default" ng-click="Delete()">
+                            <input type="submit" value="Edit" class="btn btn-default" ng-click="Allow()">
                         </span>
                     </form>
                     <br />
@@ -41,13 +50,14 @@
                                 <div ng-repeat="n in seats" on-finish-render>
                                     <img src="~/Images/Seat.png" class="draggable" id={{$index+1}} style="position:fixed" />
                                     <div class="imgtext" id={{$index+1+"a"}} style="position:fixed">
-                                        <h6>{{n.SeatNumber}}</h6>
+                                        <h6 hidden>{{n.SeatNumber}}</h6>
                                         <input id={{$index+1+"t"}} hidden value="{{n.Top}}" />
                                         <input id={{$index+1+"l"}} hidden value="{{n.Left}}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <input type="submit" value="Save" onclick="Save(); Reload();" ng-click="DisAllow()" class="btn btn-default" />
                     </form>
                 </div>
             </div>
