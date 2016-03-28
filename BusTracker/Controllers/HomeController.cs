@@ -14,56 +14,97 @@ namespace BusTracker.Controllers
     {
         private DataBaseContext db = new DataBaseContext();
 
-        public ActionResult Index()
+        public ActionResult Edit()
         {
             return View();
         }
+
         [HttpPost]
-        public void Post(string busModel, string num, string top, string left)
+        public void SavePost(string busModel, string Azone, string Bzone, string wight, string height, string arr)
         {
+            bool[,] seatsarr = new bool[Convert.ToInt32(wight), Convert.ToInt32(height)];
+            int a = 0;
+            for (int i = 0; i < Convert.ToInt32(wight); i++)
+            {
+                for (int j = 0; j < Convert.ToInt32(height); j++)
+                {
+                    seatsarr[i, j] = Convert.ToBoolean(arr.Split(',')[a]);
+                    a++;
+                }
+            }
             var q = (from c in db.BusModels where c.ModelOfBus == busModel select c).FirstOrDefault();
             if (q == null)
             {
                 int id = db.BusModels.Count() == 0 ? 1 : db.BusModels.ToList().Last().BusModelId + 1;
-                db.BusModels.Add(new BusModel() { ModelOfBus = busModel, BusModelId = id });
-                int a = 0;
-                for (int i = 0; i < num.Length; i++)
+                db.BusModels.Add(new BusModel { BusModelId = id, ModelOfBus = busModel, Wigth = Convert.ToInt32(wight), Height = Convert.ToInt32(height), Azone = Convert.ToInt32(Azone), Bzone = Convert.ToInt32(Bzone) });
+                for (int i = 0; i < Convert.ToInt32(wight); i++)
                 {
-                    if (num[i] == ',')
-                        a++;
-                }
-                for (int i = 0; i <= a; i++)
-                {
-                    db.Seats.Add(new Seat() { BusModelId = id, SeatNumber = Convert.ToInt32(num.Split(',')[i]), Top = top.Split(',')[i], Left = left.Split(',')[i] });
+                    for (int j = 0; j < Convert.ToInt32(height); j++)
+                    {
+                        if (seatsarr[i, j])
+                        {
+                            db.Seats.Add(new Seat() { BusModelId = id, Left = j.ToString(), Top = i.ToString() });
+                        }
+                    }
                 }
                 db.SaveChanges();
             }
-            else
-                Put(busModel, num, top, left);
         }
-        public void Put(string busModel, string num, string top, string left)
+        public ActionResult Models()
         {
-            var q = (from c in db.BusModels where c.ModelOfBus == busModel select c).FirstOrDefault();
-            if (q != null)
+            ViewBag.ModelOfBus = new SelectList(db.BusModels, "BusModelId", "ModelOfBus");
+            return View();
+        }
+
+        [HttpPost]
+        public void ModelReturn(string Id)
+        {
+            if (Id != null && Id != String.Empty)
             {
-                q.Seats = (from c in db.Seats where c.BusModelId == q.BusModelId select c).ToList();
-                int a = 0;
-                for (int i = 0; i < num.Length; i++)
+                int n = Convert.ToInt32(Id);
+                BusModel bm = db.BusModels.Find(n);
+                var res = new {Azone = bm.Azone, Bzone = bm.Bzone, Wigth = bm.Wigth, Height = bm.Height };
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string model = js.Serialize(res);
+                Response.Write(model);
+                Response.Flush();
+                Response.End();
+            }
+            else
+            {
+                Response.Write("");
+                Response.Flush();
+                Response.End();
+            }
+        }
+        [HttpPost]
+        public void SeatsReturn(string Id)
+        {
+            if (Id != null && Id != String.Empty)
+            {
+                int n = Convert.ToInt32(Id);
+                BusModel bm = db.BusModels.Find(n);
+                List<object> res = new List<object>();
+                bm.Seats = (from c in db.Seats where c.BusModelId == n select c).ToList();
+                foreach (var c in bm.Seats)
                 {
-                    if (num[i] == ',')
-                        a++;
+                    res.Add(new { Left = c.Left, Top = c.Top });
                 }
-                for (int i = 0; i <= a; i++)
-                {
-                    var st = (from c in q.Seats where c.SeatNumber == Convert.ToInt32(num.Split(',')[i]) select c).FirstOrDefault();
-                    st.Top = top.Split(',')[i];
-                    st.Left = left.Split(',')[i];
-                }
-                db.SaveChanges();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                string model = js.Serialize(res);
+                Response.Write(model);
+                Response.Flush();
+                Response.End();
+            }
+            else
+            {
+                Response.Write("");
+                Response.Flush();
+                Response.End();
             }
         }
         [HttpDelete]
-        public void Delete(int Id)
+        public void DeleteModel(int Id)
         {
             var q = (from c in db.BusModels where c.BusModelId == Id select c).FirstOrDefault();
             if (q != null)
@@ -75,38 +116,6 @@ namespace BusTracker.Controllers
                 }
                 db.BusModels.Remove(q);
                 db.SaveChanges();
-            }
-        }
-
-        public ActionResult Choice()
-        {
-            ViewBag.ModelOfBus = new SelectList(db.BusModels, "BusModelId", "ModelOfBus");
-            return View();
-        }
-        [HttpPost]
-        public void ForChoice(string Id)
-        {
-            if (Id != null && Id != String.Empty)
-            {
-                int n = Convert.ToInt32(Id);
-                BusModel bm = db.BusModels.Find(n);
-                bm.Seats = (from c in db.Seats where c.BusModelId == n select c).ToList();
-                List<object> sts = new List<object>();
-                foreach (var c in bm.Seats)
-                {
-                    sts.Add(new { SeatNumber = c.SeatNumber, Top = c.Top, Left = c.Left });
-                }
-                JavaScriptSerializer js = new JavaScriptSerializer();
-                string seats = js.Serialize(sts);
-                Response.Write(seats);
-                Response.Flush();
-                Response.End();
-            }
-            else
-            {
-                Response.Write("");
-                Response.Flush();
-                Response.End();
             }
         }
     }

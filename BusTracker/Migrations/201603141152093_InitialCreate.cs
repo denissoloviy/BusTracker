@@ -11,7 +11,8 @@ namespace BusTracker.Migrations
                 "dbo.BusModels",
                 c => new
                     {
-                        BusModelId = c.String(nullable: false, maxLength: 128),
+                        BusModelId = c.Int(nullable: false),
+                        ModelOfBus = c.String(),
                     })
                 .PrimaryKey(t => t.BusModelId);
             
@@ -20,13 +21,13 @@ namespace BusTracker.Migrations
                 c => new
                     {
                         SeatId = c.Int(nullable: false, identity: true),
-                        BusModelId = c.String(maxLength: 128),
+                        BusModelId = c.Int(nullable: false),
                         SeatNumber = c.Int(nullable: false),
                         Left = c.String(),
                         Top = c.String(),
                     })
                 .PrimaryKey(t => t.SeatId)
-                .ForeignKey("dbo.BusModels", t => t.BusModelId)
+                .ForeignKey("dbo.BusModels", t => t.BusModelId, cascadeDelete: true)
                 .Index(t => t.BusModelId);
             
         }

@@ -14,6 +14,10 @@ namespace BusTracker.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BusModelId { get; set; }
         public string ModelOfBus { get; set; }
+        public int Wigth { get; set; }
+        public int Height { get; set; }
+        public int Azone { get; set; }
+        public int Bzone { get; set; }
         public List<Seat> Seats { get; set; }
     }
 }

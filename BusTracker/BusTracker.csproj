@@ -152,13 +152,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603061426189_InitialCreate.cs" />
-    <Compile Include="Migrations\201603061426189_InitialCreate.Designer.cs">
-      <DependentUpon>201603061426189_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201603141152093_InitialCreate.cs" />
+    <Compile Include="Migrations\201603141152093_InitialCreate.Designer.cs">
+      <DependentUpon>201603141152093_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201603081937285_qwer1.cs" />
-    <Compile Include="Migrations\201603081937285_qwer1.Designer.cs">
-      <DependentUpon>201603081937285_qwer1.cs</DependentUpon>
+    <Compile Include="Migrations\201603242013460_CheckBoxSaved.cs" />
+    <Compile Include="Migrations\201603242013460_CheckBoxSaved.Designer.cs">
+      <DependentUpon>201603242013460_CheckBoxSaved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603271628462_AddAzoneBzone.cs" />
+    <Compile Include="Migrations\201603271628462_AddAzoneBzone.Designer.cs">
+      <DependentUpon>201603271628462_AddAzoneBzone.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BusModel.cs" />
@@ -229,13 +233,22 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\Azone.png" />
+    <Content Include="Images\Azone1.png" />
+    <Content Include="Images\Azone2.png" />
+    <Content Include="Images\Azone3.png" />
+    <Content Include="Images\Azone4.png" />
     <Content Include="Images\Bus.png" />
+    <Content Include="Images\Bzone.png" />
+    <Content Include="Images\Bzone1.png" />
+    <Content Include="Images\Bzone2.png" />
+    <Content Include="Images\Czone.png" />
     <Content Include="Images\images.jpg" />
     <Content Include="Images\Seat.png" />
+    <Content Include="Images\Table.png" />
     <Content Include="Libraries\angular.js" />
     <Content Include="Libraries\bootstrap-theme.css" />
     <Content Include="Libraries\bootstrap.css" />
-    <Content Include="Scripts\MyScripts\DragAndDrop.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -250,10 +263,8 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\MyScripts\ModelSelection.js" />
-    <Content Include="Scripts\MyScripts\SaveToDB.js" />
-    <Content Include="Scripts\MyScripts\SeatsCreating.js" />
-    <Content Include="Scripts\MyScripts\SeatsLoading.js" />
+    <Content Include="Scripts\MyScripts\ForEdit.js" />
+    <Content Include="Scripts\MyScripts\ForModels.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -269,8 +280,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Choice.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\Models.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -279,11 +290,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201603061426189_InitialCreate.resx">
-      <DependentUpon>201603061426189_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603141152093_InitialCreate.resx">
+      <DependentUpon>201603141152093_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603081937285_qwer1.resx">
-      <DependentUpon>201603081937285_qwer1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201603242013460_CheckBoxSaved.resx">
+      <DependentUpon>201603242013460_CheckBoxSaved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603271628462_AddAzoneBzone.resx">
+      <DependentUpon>201603271628462_AddAzoneBzone.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

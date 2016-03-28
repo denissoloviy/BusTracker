@@ -5,13 +5,13 @@ namespace BusTracker.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class CheckBoxSaved : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CheckBoxSaved));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603061426189_InitialCreate"; }
+            get { return "201603242013460_CheckBoxSaved"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,5 +1,45 @@
 ﻿body {
-    
+    margin:0px 0px 0px 0px;
+}
+
+.Azone{
+    width:15.3%;/*153/1000*/
+    height:auto;
+    float:left;
+}
+
+.Bzone{
+    width:7.8%;/*78/1000*/
+    height:auto;
+    left:15.3%;
+    float:left;
+}
+
+.Czone{
+    width:62.1%;/*621/1000*/
+    height:auto;
+    left:23.1%;
+    float:left;
+}
+
+.a{
+    float:left;
+}
+#fixedbc{
+    /*width:50%;
+    height:20%;*/
+    background-image:url("../Images/Czone.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+    position:relative;
+    /*z-index:-1;*/
+}
+#seatstable{
+    /*position:relative;
+    left:0px;                                                   
+    top:0px;
+    left: auto; right: auto;
+    z-index:1;*/
 }
 
 .draggable{

@@ -5,13 +5,13 @@ namespace BusTracker.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    public sealed partial class qwer1 : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(qwer1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201603081937285_qwer1"; }
+            get { return "201603141152093_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
