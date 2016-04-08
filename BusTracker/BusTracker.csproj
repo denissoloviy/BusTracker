@@ -242,9 +242,6 @@
     <Content Include="app\views\refresh.html" />
     <Content Include="app\views\signup.html" />
     <Content Include="app\views\tokens.html" />
-    <Content Include="App_Data\BusTrackerConnection.mdf" />
-    <Content Include="App_Data\BusTrackerConnection_log.ldf">
-      <DependentUpon>BusTrackerConnection.mdf</DependentUpon>
     </Content>
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
