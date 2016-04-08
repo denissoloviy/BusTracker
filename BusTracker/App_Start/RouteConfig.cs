@@ -16,7 +16,7 @@ namespace BusTracker
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Models", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Qwerty", id = UrlParameter.Optional }
             );
         }
     }

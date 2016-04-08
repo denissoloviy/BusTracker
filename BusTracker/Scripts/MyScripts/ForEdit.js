@@ -74,7 +74,7 @@ function Save() {//Зберігаємо в базу даних
     data.append("wight", document.getElementById("wight").value);
     data.append("height", document.getElementById("height").value);
     data.append("arr", arr);
-    SendBus.open("POST", "SavePost");
+    SendBus.open("POST", "api/Edit/SavePost/");
     SendBus.send(data);
 }
 

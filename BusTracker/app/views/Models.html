@@ -1,0 +1,33 @@
+﻿<div class="container" style="width:73.7321%;">
+    <!--1000/1366-->
+    <div class="page-header">
+        <h2 class="qwer">Вибір моделі</h2>
+    </div>
+    <form>
+        <select id="ddl" class="btn btn-default dropdown-toggle"></select>
+        <input type="submit" value="Enter" class="btn btn-default" ng-click="ModelLoad()">
+        <span>
+            <input type="submit" value="Delete" class="btn btn-default" ng-click="Delete()">
+        </span>
+    </form>
+    <br />
+    <span><a href="#/Edit">Створити нову модель</a></span>
+    <br />
+    <form>
+        <div class="panel">
+            <div class="panel panel-default a">
+                <div class="Azone">
+                    <img src="/Images/Azone.png" id="zoneA" style="max-width:100%; height:auto" />
+                </div>
+                <div class="Bzone">
+                    <img src="/Images/Bzone.png" id="zoneB" style="max-width:100%; height:auto" />
+                </div>
+                <div class="Czone" style="width:62.1%; max-width:100%; height:auto;">
+                    <div id="fixedbc" style="max-width:100%; height:auto;">
+                        <table class="table table-bordered" id="seatstable"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,48 @@
+﻿
+<div class="container" style="width:73.7321%;">
+    <!--1000/1366-->
+    <div class="page-header">
+        <h2 class="qwer">Задання конфігурації сидінь</h2>
+    </div>
+    <form>
+        <div class="panel">
+            <div class="panel panel-default a">
+                <span><a href="#/Models">Повернутися до вибору моделей</a></span>
+                <input class="form-control" id="busmodel" placeholder="Введіть модель автобуса..." />
+                <div class="Azone">
+                    <img src="/Images/Azone1.png" id="zoneA" style="max-width:100%; height:auto" />
+                    <div class="panel panel-primary">
+                        <input type="button" class="btn btn-default" value="1" onclick="AzoneChange('/Images/Azone1.png')" />
+                        <input type="button" class="btn btn-default" value="2" onclick="AzoneChange('/Images/Azone2.png')" />
+                        <input type="button" class="btn btn-default" value="3" onclick="AzoneChange('/Images/Azone3.png')" />
+                        <input type="button" class="btn btn-default" value="4" onclick="AzoneChange('/Images/Azone4.png')" />
+                    </div>
+                </div>
+                <div class="Bzone">
+                    <img src="/Images/Bzone2.png" id="zoneB" style="max-width:100%; height:auto" />
+                    <div class="panel panel-primary">
+                        <input type="button" class="btn btn-default" value="1" onclick="BzoneChange('/Images/Bzone1.png')" />
+                        <input type="button" class="btn btn-default" value="2" onclick="BzoneChange('/Images/Bzone2.png')" />
+                    </div>
+                </div>
+                <div class="Czone" style="width:62.1%;max-width:100%; height:auto;">
+                    <div id="fixedbc" style="max-width:100%; height:auto;">
+                        <table class="table table-bordered" id="seatstable"></table>
+                    </div>
+                    <div class="panel panel-primary">
+                        <input class="form-control" id="wight" placeholder="Введіть ширину матриці" value="4" />
+                        <input class="form-control" id="height" placeholder="Введіть довжину матриці" value="10" />
+                        <input type="button" class="btn btn-default" value="Enter" onclick="SeatTableChange(); Qwer();" />
+                    </div>
+                    <div class="draggable ui-state-error" id="seat1">
+                        <img src="/Images/Table.png" id="seat" style="max-width:100%; height:0px; width:0px" />
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <input type="button" class="btn btn-default" value="Save" onclick="Save();" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

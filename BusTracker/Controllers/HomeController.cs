@@ -13,10 +13,14 @@ namespace BusTracker.Controllers
     public class HomeController : Controller
     {
         private DataBaseContext db = new DataBaseContext();
-
+        public ActionResult Qwerty()
+        {
+            return PartialView();
+        }
+        [Authorize]
         public ActionResult Edit()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -50,10 +54,11 @@ namespace BusTracker.Controllers
                 db.SaveChanges();
             }
         }
+        [Authorize(Roles="Hauler")]
         public ActionResult Models()
         {
             ViewBag.ModelOfBus = new SelectList(db.BusModels, "BusModelId", "ModelOfBus");
-            return View();
+            return PartialView();
         }
 
         [HttpPost]
@@ -119,4 +124,19 @@ namespace BusTracker.Controllers
             }
         }
     }
+
+    //[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    //public class HaulerOnlyAttribute : AuthorizeAttribute
+    //{
+    //    public HaulerOnlyAttribute()
+    //    {
+    //        this.Roles = "Hauler";
+    //    }
+    //    protected override bool AuthorizeCore(HttpContextBase httpContext)
+    //    {
+    //        Microsoft.AspNet.Identity.UserManager<Microsoft.AspNet.Identity.EntityFramework.IdentityUser> a =
+    //            new Microsoft.AspNet.Identity.UserManager<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>(new AuthContext()));
+    //        return true;
+    //    }
+    //}
 }
